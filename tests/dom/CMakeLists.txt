@@ -111,7 +111,14 @@ if(NOT (MSVC AND MSVC_VERSION LESS 1920))
   # Compile tests that *should fail*
   add_cpp_test(readme_examples_will_fail_with_exceptions_off WILL_FAIL COMPILE_ONLY LABELS acceptance SOURCES readme_examples.cpp)
   target_compile_definitions(readme_examples_will_fail_with_exceptions_off PRIVATE SIMDJSON_EXCEPTIONS=0)
+endif()
 
+#
+# Test C++20 features
+#
+
+# Do not add the tests if we're on Visual Studio 2022 v17.6 or older
+if(NOT (MSVC AND MSVC_VERSION LESS 1930))
   add_cpp_test(range_test LABELS dom acceptance per_implementation)
   set_target_properties(range_test PROPERTIES CXX_STANDARD 20 CXX_STANDARD_REQUIRED ON CXX_EXTENSIONS OFF)
 endif()
