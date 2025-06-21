@@ -19,6 +19,7 @@ add_cpp_test(parse_many_test            LABELS dom acceptance per_implementation
 add_cpp_test(pointercheck               LABELS dom acceptance per_implementation) # https://tools.ietf.org/html/rfc6901
 add_cpp_test(stringparsingcheck         LABELS dom acceptance per_implementation) # https://tools.ietf.org/html/rfc6901
 add_cpp_test(trivially_copyable_test    LABELS dom acceptance per_implementation)
+add_cpp_test(range_test                 LABELS dom acceptance per_implementation)
 
 
 
