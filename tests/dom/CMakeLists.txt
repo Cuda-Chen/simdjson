@@ -19,7 +19,6 @@ add_cpp_test(parse_many_test            LABELS dom acceptance per_implementation
 add_cpp_test(pointercheck               LABELS dom acceptance per_implementation) # https://tools.ietf.org/html/rfc6901
 add_cpp_test(stringparsingcheck         LABELS dom acceptance per_implementation) # https://tools.ietf.org/html/rfc6901
 add_cpp_test(trivially_copyable_test    LABELS dom acceptance per_implementation)
-add_cpp_test(range_test                 LABELS dom acceptance per_implementation)
 
 
 
@@ -112,8 +111,10 @@ if(NOT (MSVC AND MSVC_VERSION LESS 1920))
   # Compile tests that *should fail*
   add_cpp_test(readme_examples_will_fail_with_exceptions_off WILL_FAIL COMPILE_ONLY LABELS acceptance SOURCES readme_examples.cpp)
   target_compile_definitions(readme_examples_will_fail_with_exceptions_off PRIVATE SIMDJSON_EXCEPTIONS=0)
-endif()
 
+  add_cpp_test(range_test LABELS dom acceptance per_implementation)
+  set_target_properties(range_test PROPERTIES CXX_STANDARD 20 CXX_STANDARD_REQUIRED ON CXX_EXTENSIONS OFF)
+endif()
 
 if(WIN32 AND BUILD_SHARED_LIBS)
   add_custom_command(TARGET basictests POST_BUILD        # Adds a post-build event
