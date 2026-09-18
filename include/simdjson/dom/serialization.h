@@ -140,6 +140,8 @@ public:
 
 class pretty_formatter : public base_formatter<pretty_formatter> {
 public:
+  //explicit pretty_formatter(int step = 4) : indent_step(step) {}
+
   simdjson_inline void print_newline();
 
   simdjson_inline void print_indents(size_t depth);
